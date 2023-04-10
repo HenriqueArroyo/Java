@@ -17,13 +17,31 @@ public class ExerciciosWhile {
         int VetorA[] = new int []{5,7,9,10,13,15,19,22};
         int VetorB[] = new int [8];
         int i =0;
-        while (i<8) {
-            VetorB[i*2]=VetorA[i];
-            System.out.println("O vetor B ["+i+"]= "+VetorB[i*2]);
+        while (i<=8) {
+            VetorB[i]=VetorA[i*2];
+            System.out.println("O vetor B ["+i+"]= "+VetorB[i]);
            
         }
     }
-        
+    public void exercicio3() {
+        int VetorA[] = new int []{5,7,9,10,13,15,19,22,27,31,38,40,44,49,57};
+        int VetorB[] = new int [15];
+        int i =0;
+        while (i<=15) {
+            VetorB[i]=VetorA[i]*VetorA[i];
+            System.out.println("O vetor B ["+i+"]= "+VetorB[i]);
+           
+        }}
+        public void exercicio4() {
+            int VetorA[] = new int []{5,7,9,10,13,15,19,22,27,31,38,40,44,49,57};
+            double VetorB[] = new double [15];
+            int i =0;
+            while (i<=15) {
+                VetorB[i]= Math.sqrt(VetorA[i]);
+                System.out.println("O vetor B ["+i+"]= "+VetorB[i]);
+               
+            }
+    }    
         
     }
 
