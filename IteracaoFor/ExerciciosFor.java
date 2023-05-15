@@ -125,7 +125,33 @@ public class ExerciciosFor {
         }
     }
 public void exercicio6() {
-    
+      //laço dentro de laço
+        // vetor média dos alunos e vetor notas
+        double alunos[] = new double[10];//esse vai receber as medias
+        double notas[] = new double[4];// esse vai receber as notas
+        //laço para receber a média do aluno
+        int cont=0;
+        for(int i=0;i<alunos.length;i++){
+            //laço para receber as notas
+            for(int j=0;j<notas.length;j++){
+                System.out.println("Digite a nota "+(j+1)+" do aluno "+(i+1)+":");
+                notas[j]=sc.nextDouble();
+                alunos[i]+=notas[j];//acumular as notas do aluno i
+            }
+            alunos[i]/=notas.length;//calcula a média dividindo pelo nº de notas
+            //conta o nº de alunos com nota>7
+            if(alunos[i]>=7){
+                cont++;
+            }
+
+        }
+        //imprimir as médias
+        for (int i = 0; i < alunos.length; i++) {
+            System.out.println(" a média do aluno "+(i+1)
+                +" é "+alunos[i]);
+        }
+        //imprimir o contador
+        System.out.println("o nº de alunos com nota >=7 é "+cont);
     
 }
 }
