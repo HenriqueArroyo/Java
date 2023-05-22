@@ -3,10 +3,10 @@ package AtividadeFormativaLogicaProgramacao;
 import java.util.Random;
 import java.util.Scanner;
 
-
 public class Exercicios {
     Scanner sc = new Scanner(System.in);
     Random rd = new Random();
+
     public void Exercicio1() {
         System.out.print("Determine o Nº de linhas: ");
         int linhas = sc.nextInt();
@@ -51,11 +51,12 @@ public class Exercicios {
             System.out.println();
         }
     }
+
     public void Exercicio2() {
         int numeroSorteado = (int) (Math.random() * 1001);
         int palpite;
         int tentativas = 0;
-      
+
         System.out.println("Tente adivinhar um número de 0 a 1000.");
 
         while (true) {
@@ -64,9 +65,13 @@ public class Exercicios {
             tentativas++;
 
             if (palpite == numeroSorteado) {
-              
-                System.out.println("Parabéns! Você acertou o número " + numeroSorteado + ".");
-                System.out.println("Você acertou em " + tentativas + " tentativa(s).");
+
+                System.out.println("Parabéns! Você acertou o número " + numeroSorteado
+                        + ".");
+                System.out.println("Você acertou em " + tentativas
+                        + " tentativas.");
+                System.out.println("Fim!");
+                System.out.println("============================");
             } else if (palpite < numeroSorteado) {
                 System.out.println("O número sorteado é maior do que o seu palpite.");
             } else {
@@ -74,8 +79,9 @@ public class Exercicios {
             }
         }
     }
+
     public void Exercicio3() {
-        int tamanhoVetor = rd.nextInt(901) + 100; 
+        int tamanhoVetor = rd.nextInt(901) + 100;
         int[] vetor = new int[tamanhoVetor];
 
         System.out.println("Tamanho do vetor: " + tamanhoVetor);
@@ -83,7 +89,7 @@ public class Exercicios {
         System.out.println("Vetor gerado:");
 
         for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = rd.nextInt(100) + 1; 
+            vetor[i] = rd.nextInt(100) + 1;
             System.out.print(vetor[i] + " ");
         }
 
@@ -103,26 +109,22 @@ public class Exercicios {
             }
         }
 
-        int quantidadeParesPosicoesImpares = 0;
-        int quantidadeImparesPosicoesPares = 0;
+        int qtdParPosicaoImpar = 0;
+        int qtdImparPosicaoPar = 0;
 
         for (int i = 1; i < vetor.length; i += 2) {
             if (vetor[i] % 2 == 0) {
-                quantidadeParesPosicoesImpares++;
+                qtdParPosicaoImpar++;
             }
         }
 
         for (int i = 0; i < vetor.length; i += 2) {
             if (vetor[i] % 2 != 0) {
-                quantidadeImparesPosicoesPares++;
+                qtdImparPosicaoPar++;
             }
         }
 
-        System.out.println("Quantidade de números pares nas posições ímpares: " + quantidadeParesPosicoesImpares);
-        System.out.println("Quantidade de números ímpares nas posições pares: " + quantidadeImparesPosicoesPares);
+        System.out.println("Quantidade de números pares nas posições ímpares: " + qtdParPosicaoImpar);
+        System.out.println("Quantidade de números ímpares nas posições pares: " + qtdImparPosicaoPar);
     }
 }
-    
-        
-    
-
