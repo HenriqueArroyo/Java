@@ -30,7 +30,7 @@ public class Exercicios {
             }
             System.out.println();
         }
-        System.out.println("Matriz após substituição dos valores:");
+        System.out.println("Matriz com substituição dos valores:");
 
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
@@ -56,10 +56,11 @@ public class Exercicios {
         int numeroSorteado = (int) (Math.random() * 1001);
         int palpite;
         int tentativas = 0;
+        boolean tentarNovamente = true;
 
         System.out.println("Tente adivinhar um número de 0 a 1000.");
 
-        while (true) {
+        while (tentarNovamente) {
             System.out.print("Digite o seu palpite: ");
             palpite = sc.nextInt();
             tentativas++;
@@ -83,6 +84,8 @@ public class Exercicios {
     public void Exercicio3() {
         int tamanhoVetor = rd.nextInt(901) + 100;
         int[] vetor = new int[tamanhoVetor];
+        int qtdParPosicaoImpar = 0;
+        int qtdImparPosicaoPar = 0;
 
         System.out.println("Tamanho do vetor: " + tamanhoVetor);
 
@@ -108,10 +111,6 @@ public class Exercicios {
                 System.out.print(vetor[i] + " ");
             }
         }
-
-        int qtdParPosicaoImpar = 0;
-        int qtdImparPosicaoPar = 0;
-
         for (int i = 1; i < vetor.length; i += 2) {
             if (vetor[i] % 2 == 0) {
                 qtdParPosicaoImpar++;
