@@ -18,7 +18,7 @@ public class Exercicios {
 
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
-                matriz[i][j] = rd.nextInt(9) + 1;
+                matriz[i][j] = rd.nextInt(10);
             }
         }
 
@@ -58,7 +58,9 @@ public class Exercicios {
         int tentativas = 0;
         boolean tentarNovamente = true;
 
-        System.out.println("Tente adivinhar um número de 0 a 1000.");
+        System.out.println("============================");
+        System.out.println("Tente adivinhar um número de 0 a 1000:");
+
 
         while (tentarNovamente) {
             System.out.print("Digite o seu palpite: ");
@@ -95,7 +97,7 @@ public class Exercicios {
             vetor[i] = rd.nextInt(100) + 1;
             System.out.print(vetor[i] + " ");
         }
-
+        System.out.println();
         System.out.println("Números pares do vetor:");
 
         for (int i = 0; i < vetor.length; i++) {
@@ -103,7 +105,7 @@ public class Exercicios {
                 System.out.print(vetor[i] + " ");
             }
         }
-
+        System.out.println();
         System.out.println("Números ímpares do vetor:");
 
         for (int i = 0; i < vetor.length; i++) {
@@ -122,7 +124,7 @@ public class Exercicios {
                 qtdImparPosicaoPar++;
             }
         }
-
+        System.out.println();
         System.out.println("Quantidade de números pares nas posições ímpares: " + qtdParPosicaoImpar);
         System.out.println("Quantidade de números ímpares nas posições pares: " + qtdImparPosicaoPar);
     }
