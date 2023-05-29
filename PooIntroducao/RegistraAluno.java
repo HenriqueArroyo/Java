@@ -1,23 +1,11 @@
 package PooIntroducao;
 
-public class RegistraAluno {
-    private String nome;
-    private String endereco;
-    private int idade;
+public class RegistraAluno extends Pessoas {
     private double notaMatematica;
     private double notaPortugues;
     private double notaCiencias;
-
     private static int contadorEstudante = 3;
-    public String getNome(){
-        return nome;
-    }
-    public String getEndereco(){
-        return endereco;
-    }
-    public int getIdade(){
-        return idade;
-    }
+
     public double getMedia(){
         double resultado = 0;
         resultado = (notaMatematica+notaCiencias+notaPortugues)/3;
@@ -26,17 +14,6 @@ public class RegistraAluno {
     public static int getQuantidadeAlunos(){
         return contadorEstudante;
     }
-    public void setNome(String temp){
-        nome = temp;
-        }
-        // define ou altera o endereço do estudante
-        public void setEndereco(String temp){
-        endereco = temp;
-        }
-        // define ou altera o endereço do estudante
-        public void setIdade(int temp){
-        idade = temp;
-        }
         // define ou altera o endereço do estudante
         public void setNotaMatematica(double temp){
         notaMatematica = temp;

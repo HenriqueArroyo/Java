@@ -1,6 +1,7 @@
 package IteracaoFor;
 
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class ExerciciosFor {
@@ -154,4 +155,5 @@ public void exercicio6() {
         System.out.println("o nº de alunos com nota >=7 é "+cont);
     
 }
+ww
 }
