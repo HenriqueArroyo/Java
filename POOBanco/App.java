@@ -12,10 +12,8 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
-        Contas numContas[] = new Contas[3];
-        numContas[i] = new Contas() {
-            
-        };
+        ContaPF exemplo1 = new ContaPF("199.596.390-96","Manuel Gomes",2550,1400);
+        ContaPF exemplo2 = new ContaPF("081.021.690-60","Laura Silva",2555,1400);
 
 
         //imprimir
@@ -25,33 +23,24 @@ public class App {
         acao = Integer.parseInt(JOptionPane.showInputDialog("Informe a Ação"));
 
         if (acao == 3) {
-            System.out.print("\nAté logo!");
+            JOptionPane.showMessageDialog(null,"Até Logo");
             sc.close(); 
         }
 
         switch (acao) {
         case 1:
-            System.out.print("\nOpção Criação de Conta ");
+        JOptionPane.showMessageDialog(null,"Criação de Conta");
             
         break;
         case 2:
-            System.out.print("\nOpção Buscar Conta\n");
-            int cont=0;
-            String numBuscado = JOptionPane.showInputDialog("Digite o Nº Buscado: ");
-            boolean naoEncontrei = true;
-            while (naoEncontrei) {
-               if (numBuscado.equals(numConta[cont].getNome())) {
-                   naoEncontrei = false;
-                   JOptionPane.showMessageDialog(null,"Idade: "+contatos[cont].getIdade());
-                   JOptionPane.showMessageDialog(null,"Telefone: "+numCont[cont].getTelefone());
-                   
-               } 
-               cont ++;
-            }
+            JOptionPane.showMessageDialog(null,"Opção Buscar Conta\nPessoa Física = 1\nPessoa Júridica = 2");
+
+                
+            
             break;
 
         default:
-            System.out.print("\nOpção Inválida!");
+        JOptionPane.showMessageDialog(null,"Opção Inválida");
             break;
     }
 
