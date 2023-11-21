@@ -57,6 +57,12 @@ public void apagar(String placa) {
     atualizarTabela(); // Atualiza a tabela de exibição após a exclusão
     }
     
+public void limpar() {
+    
+
+    atualizarTabela();
+}
+
     
 
 }

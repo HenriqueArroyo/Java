@@ -109,12 +109,34 @@ apagar.addActionListener(
     operacoes.apagar(carPlacaField.getText());
     
     carMarcaField.setText("");
-carModeloField.setText("").+;
+carModeloField.setText("");
 carAnoField.setText("");
 carPlacaField.setText("");
 carValorField.setText("");
 
 });
+
+limpar.addActionListener( 
+    e-> {
+    operacoes.limpar();
+    
+carPlacaField.setText("");
+carMarcaField.setText("");
+carModeloField.setText("");
+carAnoField.setText("");
+carPlacaField.setText("");
+carValorField.setText("");
+
+});
+
+
+
+
+
+
+
+
+
 }
 
 private void atualizarTabela() {
@@ -125,20 +147,6 @@ private void atualizarTabela() {
     tableModel.addRow(new Object[] {carro.getMarca(), carro.getModelo(),
     carro.getAno(), carro.getPlaca(), carro.getValor()});
  }
-
-limpar.addActionListener(
-    e-> {
-        operacoes.limpar(carMarcaField.getText(), carModeloField.getText(),
-    carAnoField.getText(),carPlacaField.getText(), carValorField.getText());
-
-        carMarcaField.setText("");
-carModeloField.setText("");
-carAnoField.setText("");
-carPlacaField.setText("");
-carValorField.setText("");
-    }
-
-);
 
 
 }

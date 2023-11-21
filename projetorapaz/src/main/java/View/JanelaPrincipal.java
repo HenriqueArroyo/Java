@@ -10,8 +10,10 @@ jTPane = new JTabbedPane();
 add(jTPane);
 // criandos as tabs
 // tab1 carros
-JanelaCarros tab1 = new JanelaCarros();
-jTPane.add("Carros", tab1);
+JanelaClientes tab1 = new JanelaClientes();
+JanelaCarros tab2 = new JanelaCarros();
+jTPane.add("Clientes", tab1);
+jTPane.add("Carros", tab2);
 setBounds(100, 100, 600, 600);
 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 }
