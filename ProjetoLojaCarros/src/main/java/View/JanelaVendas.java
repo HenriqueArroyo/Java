@@ -63,9 +63,9 @@ public class JanelaVendas extends JPanel {
     JComboBox<String> clientesComboBox;
 
     public JanelaVendas() {
-        JPanel painel1 = new JPanel(new BorderLayout());
-        JPanel inputPanel = new JPanel();
-        JPanel buttons = new JPanel();
+        JPanel frame1 = new JPanel(new BorderLayout());
+        JPanel inputFrame = new JPanel();
+        JPanel botoes = new JPanel();
 
         carrosComboBox = new JComboBox<>();
         clientesComboBox = new JComboBox<>();
@@ -88,7 +88,7 @@ public class JanelaVendas extends JPanel {
 
         // criar os componentes - labels
          labelCarro = new JLabel("Carro");
-         
+
         labelData = new JLabel("Data");
        
         labelValor = new JLabel("Valor");
@@ -104,21 +104,23 @@ public class JanelaVendas extends JPanel {
         atualizarButton.setBackground(Color.white);
 
         // adicionar os componentes
-        inputPanel.add(labelData);
-        inputPanel.add(inputData);
+         inputFrame.add(clientesComboBox);
+        inputFrame.add(carrosComboBox);
+        inputFrame.add(labelData);
+        inputFrame.add(inputData);
 
-        inputPanel.add(labelValor);
-        inputPanel.add(inputValor);
+        inputFrame.add(labelValor);
+        inputFrame.add(inputValor);
 
-        buttons.add(cadastrarButton);
-        buttons.add(editarButton);
-        buttons.add(apagarButton);
-        buttons.add(atualizarButton);
+        botoes.add(cadastrarButton);
+        botoes.add(editarButton);
+        botoes.add(apagarButton);
+        botoes.add(atualizarButton);
 
-        this.add(painel1);
-        painel1.add(scrollPane, BorderLayout.SOUTH);
-        painel1.add(inputPanel, BorderLayout.NORTH);
-        painel1.add(buttons, BorderLayout.CENTER);
+        this.add(frame1);
+        frame1.add(scrollPane, BorderLayout.CENTER);
+        frame1.add(inputFrame, BorderLayout.SOUTH);
+        frame1.add(botoes, BorderLayout.NORTH);
 
         carrosComboBox.addItem("Selecione um Carro");
         carros = new CarrosDAO().listarTodos();
@@ -134,8 +136,7 @@ public class JanelaVendas extends JPanel {
         }
 
         // adicionando o JComboBox ao painel
-        inputPanel.add(clientesComboBox);
-        inputPanel.add(carrosComboBox);
+       
 
         // Criar o banco de dados
         new VendasDAO().criaTabela();
@@ -213,7 +214,7 @@ public class JanelaVendas extends JPanel {
                     inputValor.setText("");
                     clientesComboBox.setSelectedIndex(0);
                     carrosComboBox.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(null, "Informação editada com Sucesso!");
+                    JOptionPane.showMessageDialog(null, "Editado com Sucesso!");
                 }
 
             }
@@ -231,7 +232,7 @@ public class JanelaVendas extends JPanel {
                     // Chama o método "apagar" do objeto operacoes com o valor do campo de entrada
                     // "placa"
                     operacoes.apagar(inputCarro.getText());
-                    JOptionPane.showMessageDialog(null, "A venda foi deletada!");
+                    JOptionPane.showMessageDialog(null, "A venda deletada com Sucesso!");
 
                     // Limpa os campos de entrada após a operação de exclusão
                     inputData.setText("");
@@ -239,7 +240,7 @@ public class JanelaVendas extends JPanel {
                     clientesComboBox.setSelectedIndex(0);
                     carrosComboBox.setSelectedIndex(0);
                 } else{
-                    JOptionPane.showMessageDialog(null,"A venda não foi deletada");
+                    JOptionPane.showMessageDialog(null,"A venda foi Cancelada!");
                 }
             }
             }

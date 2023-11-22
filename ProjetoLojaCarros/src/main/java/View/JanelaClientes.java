@@ -45,11 +45,11 @@ public class JanelaClientes extends JPanel {
     private JButton cadastrarButton, apagarButton, editarButton;
 
     public JanelaClientes() {
-        JPanel painel1 = new JPanel();
-        JPanel inputPanel = new JPanel();
-        JPanel buttons = new JPanel();
+        JPanel frame1 = new JPanel();
+        JPanel inputFrame = new JPanel();
+        JPanel botoes = new JPanel();
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        painel1.setLayout(new BorderLayout());
+        frame1.setLayout(new BorderLayout());
 
         // construir a tabela
         tableModel = new DefaultTableModel();
@@ -57,8 +57,9 @@ public class JanelaClientes extends JPanel {
         tableModel.addColumn("Nome");
         tableModel.addColumn("Telefone");
         tableModel.addColumn("Cidade");
+    
         table = new JTable(tableModel);
-        table.setBackground(Color.LIGHT_GRAY);
+        table.setBackground(Color.white);
         table.setFont(new Font("Arial", Font.PLAIN, 10));
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setViewportView(table);
@@ -83,7 +84,7 @@ public class JanelaClientes extends JPanel {
         labelNome = new JLabel("Nome");
        
 
-        labelTelefone = new JLabel("DDD + Telefone");
+        labelTelefone = new JLabel("Telefone");
        
 
         labelCidade = new JLabel("Cidade");
@@ -100,23 +101,25 @@ public class JanelaClientes extends JPanel {
         editarButton.setBackground(Color.white);
 
         // adicionar os componentes
-        inputPanel.add(labelCpf);
-        inputPanel.add(inputCpf);
-        inputPanel.add(labelNome);
-        inputPanel.add(inputNome);
-        inputPanel.add(labelTelefone);
-        inputPanel.add(inputTelefone);
-        inputPanel.add(labelCidade);
-        inputPanel.add(inputCidade);
+       
+        inputFrame.add(labelNome);
+        inputFrame.add(inputNome);
+        inputFrame.add(labelCpf);
+        inputFrame.add(inputCpf);
+        inputFrame.add(labelCidade);
+        inputFrame.add(inputCidade);
+        inputFrame.add(labelTelefone);
+        inputFrame.add(inputTelefone);
+       
 
-        buttons.add(cadastrarButton);
-        buttons.add(editarButton);
-        buttons.add(apagarButton);
+        botoes.add(cadastrarButton);
+        botoes.add(apagarButton);
+        botoes.add(editarButton);
 
-        this.add(painel1);
-        painel1.add(scrollPane, BorderLayout.NORTH);
-        painel1.add(inputPanel, BorderLayout.CENTER);
-        painel1.add(buttons, BorderLayout.SOUTH);
+        this.add(frame1);
+        frame1.add(scrollPane, BorderLayout.NORTH);
+        frame1.add(inputFrame, BorderLayout.CENTER);
+        frame1.add(botoes, BorderLayout.SOUTH);
 
         // Criar o banco de dados
         new ClientesDAO().criaTabela();
@@ -125,7 +128,6 @@ public class JanelaClientes extends JPanel {
         atualizarTabela();
 
         table.addMouseListener(new MouseAdapter() {
-            @Override
             public void mouseClicked(MouseEvent evt) {
                 linhaSelecionada = table.rowAtPoint(evt.getPoint());
                 if (linhaSelecionada != -1) {
@@ -176,7 +178,6 @@ public class JanelaClientes extends JPanel {
         });
 
         editarButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 if (inputCpf.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Selecione algo para editar");
@@ -196,7 +197,6 @@ public class JanelaClientes extends JPanel {
         });
 
         apagarButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 if (inputCpf.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Selecione um cliente para apagar.");
