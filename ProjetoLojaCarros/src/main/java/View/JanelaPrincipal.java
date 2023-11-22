@@ -13,6 +13,7 @@ public class JanelaPrincipal extends JFrame {
         abas.add("Vendas", new JanelaVendas());
         this.add(abas);
         setBounds(300, 250, 1400, 600);
+        setResizable(false);
     }
 
     public void run(){

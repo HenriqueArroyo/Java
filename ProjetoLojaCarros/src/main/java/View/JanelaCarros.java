@@ -16,6 +16,7 @@ import Connection.CarrosDAO;
 import Controller.CarrosControl;
 
 import java.awt.AWTException;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -63,10 +64,15 @@ public class JanelaCarros extends JPanel {
         add(inputPanel);
         JPanel botoes = new JPanel();
         botoes.add(cadastrar = new JButton("Cadastrar"));
+        cadastrar.setBackground(Color.white);
         botoes.add(editar = new JButton("Editar"));
+        editar.setBackground(Color.white);
         botoes.add(apagar = new JButton("Apagar"));
+        apagar.setBackground(Color.white);
+       
 
-        add(botoes);
+        
+
         // tabela de carros
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
@@ -76,7 +82,7 @@ public class JanelaCarros extends JPanel {
         jSPane.setViewportView(table);
 
         // Cria o banco de dados caso não tenha sido criado
-
+ add(botoes);
         new CarrosDAO().criaTabela();
 
         // incluindo elementos do banco na criação do painel
@@ -84,7 +90,6 @@ public class JanelaCarros extends JPanel {
 
         // tratamento de Eventos
         table.addMouseListener(new MouseAdapter() {
-            @Override
             public void mouseClicked(MouseEvent evt) {
                 linhaSelecionada = table.rowAtPoint(evt.getPoint());
                 if (linhaSelecionada != -1) {
@@ -158,7 +163,6 @@ public class JanelaCarros extends JPanel {
 
         // Configura a ação do botão "apagar" para excluir um registro no banco de dados
         apagar.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 if (carPlacaField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Selecione um carro para apagar.");

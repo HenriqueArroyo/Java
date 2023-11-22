@@ -72,10 +72,10 @@ public class JanelaVendas extends JPanel {
 
         // construir a tabela
         tableModel = new DefaultTableModel();
-        tableModel.addColumn("Cliente");
         tableModel.addColumn("Data");
-        tableModel.addColumn("Carro");
+        tableModel.addColumn("Cliente");
         tableModel.addColumn("Valor");
+        tableModel.addColumn("Carro");
         table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setViewportView(table);
@@ -87,15 +87,21 @@ public class JanelaVendas extends JPanel {
         inputValor = new JTextField(10);
 
         // criar os componentes - labels
+         labelCarro = new JLabel("Carro");
+         
         labelData = new JLabel("Data");
-        labelCarro = new JLabel("Carro");
+       
         labelValor = new JLabel("Valor");
 
         // botões
         cadastrarButton = new JButton("Comprar");
+        cadastrarButton.setBackground(Color.white);
         apagarButton = new JButton("Apagar");
+        apagarButton.setBackground(Color.white);
         editarButton = new JButton("Editar");
+        editarButton.setBackground(Color.white);
         atualizarButton = new JButton("Atualizar");
+        atualizarButton.setBackground(Color.white);
 
         // adicionar os componentes
         inputPanel.add(labelData);
@@ -110,9 +116,9 @@ public class JanelaVendas extends JPanel {
         buttons.add(atualizarButton);
 
         this.add(painel1);
-        painel1.add(scrollPane, BorderLayout.CENTER);
+        painel1.add(scrollPane, BorderLayout.SOUTH);
         painel1.add(inputPanel, BorderLayout.NORTH);
-        painel1.add(buttons, BorderLayout.SOUTH);
+        painel1.add(buttons, BorderLayout.CENTER);
 
         carrosComboBox.addItem("Selecione um Carro");
         carros = new CarrosDAO().listarTodos();
@@ -138,7 +144,6 @@ public class JanelaVendas extends JPanel {
         atualizarTabela();
 
         table.addMouseListener(new MouseAdapter() {
-            @Override
             public void mouseClicked(MouseEvent evt) {
                 linhaSelecionada = table.rowAtPoint(evt.getPoint());
                 if (linhaSelecionada != -1) {
@@ -153,7 +158,6 @@ public class JanelaVendas extends JPanel {
         VendasControl operacoes = new VendasControl(vendas, tableModel, table);
 
         cadastrarButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 String data = inputData.getText();
                 String valor = inputValor.getText();
@@ -195,7 +199,6 @@ public class JanelaVendas extends JPanel {
             }
         });
         editarButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 String clienteSelecionado = (String) clientesComboBox.getSelectedItem(); // pegar o cliente selecionad no ComboBox
                 String carroSelecionado = (String) carrosComboBox.getSelectedItem(); // pegar o carro selecionado no ComboBox
@@ -218,7 +221,6 @@ public class JanelaVendas extends JPanel {
 
         // Configura a ação do botão "apagar" para excluir um registro no banco de dados
         apagarButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 String carroSelecionado = (String) carrosComboBox.getSelectedItem(); // pegar o carro selecionado no ComboBox
                 if (inputCarro.getText().isEmpty()) {
@@ -245,7 +247,6 @@ public class JanelaVendas extends JPanel {
 
         // atualizar as comboBox com os valores atuais
         atualizarButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 atualizarComboBoxClientes();
                 atualizarComboBoxCarros();

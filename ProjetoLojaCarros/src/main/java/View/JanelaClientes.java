@@ -53,7 +53,7 @@ public class JanelaClientes extends JPanel {
 
         // construir a tabela
         tableModel = new DefaultTableModel();
-        tableModel.addColumn("Cpf");
+        tableModel.addColumn("CPF");
         tableModel.addColumn("Nome");
         tableModel.addColumn("Telefone");
         tableModel.addColumn("Cidade");
@@ -65,40 +65,39 @@ public class JanelaClientes extends JPanel {
 
         // criar os componentes
         inputCpf = new JTextField(20);
-        inputCpf.setFont(new Font("Arial", Font.PLAIN, 10));
+       
 
         inputNome = new JTextField(20);
-        inputNome.setFont(new Font("Arial", Font.PLAIN, 10));
+        
 
         inputTelefone = new JTextField(20);
-        inputTelefone.setFont(new Font("Arial", Font.PLAIN, 10));
+        
 
         inputCidade = new JTextField(20);
-        inputCidade.setFont(new Font("Arial", Font.PLAIN, 10));
+        
 
         // criar os componentes - labels
         labelCpf = new JLabel("CPF");
-        labelCpf.setFont(new Font("Arial", Font.PLAIN, 10));
+       
 
         labelNome = new JLabel("Nome");
-        labelNome.setFont(new Font("Arial", Font.PLAIN, 10));
+       
 
         labelTelefone = new JLabel("DDD + Telefone");
-        labelTelefone.setFont(new Font("Arial", Font.PLAIN, 10));
+       
 
         labelCidade = new JLabel("Cidade");
-        labelCidade.setFont(new Font("Arial", Font.PLAIN, 10));
+        
 
         // botões
         cadastrarButton = new JButton("Cadastrar");
-        cadastrarButton.setFont(new Font("Arial", Font.PLAIN, 10));
-        cadastrarButton.setBackground(Color.GREEN);
+        cadastrarButton.setBackground(Color.white);
 
         apagarButton = new JButton("Apagar");
-        apagarButton.setFont(new Font("Arial", Font.PLAIN, 10));
+        apagarButton.setBackground(Color.white);
 
         editarButton = new JButton("Editar");
-        editarButton.setFont(new Font("Arial", Font.PLAIN, 10));
+        editarButton.setBackground(Color.white);
 
         // adicionar os componentes
         inputPanel.add(labelCpf);
@@ -115,8 +114,8 @@ public class JanelaClientes extends JPanel {
         buttons.add(apagarButton);
 
         this.add(painel1);
-        painel1.add(scrollPane, BorderLayout.CENTER);
-        painel1.add(inputPanel, BorderLayout.NORTH);
+        painel1.add(scrollPane, BorderLayout.NORTH);
+        painel1.add(inputPanel, BorderLayout.CENTER);
         painel1.add(buttons, BorderLayout.SOUTH);
 
         // Criar o banco de dados
