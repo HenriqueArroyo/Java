@@ -41,9 +41,11 @@ public class JanelaCarros extends JPanel {
     public JanelaCarros() {
         super();
 
-        // entrada de dados
+        // Configuração da interface gráfica
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(new JLabel("Cadastro Carros"));
+
+        // Painel de entrada de dados
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(5, 2));
         inputPanel.add(new JLabel("Marca"));
@@ -62,6 +64,8 @@ public class JanelaCarros extends JPanel {
         carValorField = new JTextField(20);
         inputPanel.add(carValorField);
         add(inputPanel);
+
+        // Painel de botões
         JPanel botoes = new JPanel();
         botoes.add(cadastrar = new JButton("Cadastrar"));
         cadastrar.setBackground(Color.white);
@@ -69,11 +73,8 @@ public class JanelaCarros extends JPanel {
         editar.setBackground(Color.white);
         botoes.add(apagar = new JButton("Apagar"));
         apagar.setBackground(Color.white);
-       
 
-        
-
-        // tabela de carros
+        // Tabela de carros
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
         tableModel = new DefaultTableModel(new Object[][] {},
@@ -81,14 +82,12 @@ public class JanelaCarros extends JPanel {
         table = new JTable(tableModel);
         jSPane.setViewportView(table);
 
-        // Cria o banco de dados caso não tenha sido criado
- add(botoes);
+        // Criação do banco de dados
+        add(botoes);
         new CarrosDAO().criaTabela();
-
-        // incluindo elementos do banco na criação do painel
         atualizarTabela();
 
-        // tratamento de Eventos
+        // Tratamento de eventos
         table.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 linhaSelecionada = table.rowAtPoint(evt.getPoint());
@@ -102,17 +101,13 @@ public class JanelaCarros extends JPanel {
             }
         });
 
-        // Cria um objeto operacoes da classe CarrosControl para executar operações no
-        // banco de dados
+        // Criação do objeto de operações no banco de dados
         CarrosControl operacoes = new CarrosControl(carros, tableModel, table);
 
-
-
-        // Configura a ação do botão "cadastrar" para adicionar um novo registro no
-        // banco de dados
-
+        // Configuração da ação do botão "Cadastrar"
         cadastrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // Validar campos antes de cadastrar
                 if (carMarcaField.getText().isEmpty() || carModeloField.getText().isEmpty()
                         || carAnoField.getText().isEmpty()
                         || carPlacaField.getText().isEmpty() || carValorField.getText().isEmpty()) {
@@ -120,34 +115,32 @@ public class JanelaCarros extends JPanel {
                 } else {
                     if (!carAnoField.getText().matches("[0-9]+")) {
                         JOptionPane.showMessageDialog(null, "O campo 'Ano' deve conter apenas números.");
-                    } else if(!carValorField.getText().matches("[0-9]+")){
+                    } else if (!carValorField.getText().matches("[0-9]+")) {
                         JOptionPane.showMessageDialog(null, "O campo 'Valor' deve conter apenas números.");
-                    } else{
-                        // Chama o método "cadastrar" do objeto operacoes com os valores dos campos de
-                    // entrada
-                    operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(),
-                            carPlacaField.getText(), carValorField.getText());
-                    // Limpa os campos de entrada após a operação de cadastro
-                    carMarcaField.setText("");
-                    carModeloField.setText("");
-                    carAnoField.setText("");
-                    carPlacaField.setText("");
-                    carValorField.setText("");
+                    } else {
+                        // Chama o método "cadastrar" do objeto operacoes com os valores dos campos de entrada
+                        operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(),
+                                carPlacaField.getText(), carValorField.getText());
+                        // Limpa os campos de entrada após a operação de cadastro
+                        carMarcaField.setText("");
+                        carModeloField.setText("");
+                        carAnoField.setText("");
+                        carPlacaField.setText("");
+                        carValorField.setText("");
                     }
-                    
                 }
             }
         });
 
-        // Configura a ação do botão "editar" para atualizar um registro no banco de
-        // dados
+        // Configuração da ação do botão "Editar"
         editar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (carPlacaField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Selecione algo para editar");
-                } else{
+                } else {
+                    // Chama o método "atualizar" do objeto operacoes com os valores dos campos de entrada
                     operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(),
-                        carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
+                            carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
 
                     // Limpa os campos de entrada após a operação de atualização
                     carMarcaField.setText("");
@@ -157,49 +150,46 @@ public class JanelaCarros extends JPanel {
                     carValorField.setText("");
                     JOptionPane.showMessageDialog(null, "Edição realizada com Sucesso!");
                 }
-                
             }
         });
 
-        // Configura a ação do botão "apagar" para excluir um registro no banco de dados
+        // Configuração da ação do botão "Apagar"
         apagar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (carPlacaField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Selecione um carro para apagar.");
                 } else {
-                    int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja apagar os campos?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                    // Confirmação do usuário antes de apagar
+                    int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja apagar os campos?",
+                            "Confirmação", JOptionPane.YES_NO_OPTION);
                     if (resposta == JOptionPane.YES_OPTION) {
-                    // Chama o método "apagar" do objeto operacoes com o valor do campo de entrada
-                    // "placa"
-                    operacoes.apagar(carPlacaField.getText());
-                    JOptionPane.showMessageDialog(null, "O Carro " + carModeloField.getText() + " de placa "
-                            + carPlacaField.getText() + " foi deletado!");
+                        // Chama o método "apagar" do objeto operacoes com o valor do campo de entrada "placa"
+                        operacoes.apagar(carPlacaField.getText());
+                        JOptionPane.showMessageDialog(null, "O Carro " + carModeloField.getText() + " de placa "
+                                + carPlacaField.getText() + " foi deletado!");
 
-                    // Limpa os campos de entrada após a operação de exclusão
-                    carMarcaField.setText("");
-                    carModeloField.setText("");
-                    carAnoField.setText("");
-                    carPlacaField.setText("");
-                    carValorField.setText("");
-                } else{
-                    JOptionPane.showMessageDialog(null, "O carro não foi deletado!");
+                        // Limpa os campos de entrada após a operação de exclusão
+                        carMarcaField.setText("");
+                        carModeloField.setText("");
+                        carAnoField.setText("");
+                        carPlacaField.setText("");
+                        carValorField.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "O carro não foi deletado!");
+                    }
                 }
             }
-        }
         });
-
     }
 
-    // atualizar Tabela de Carros com o Banco de Dados
+    // Atualiza a tabela de carros com os dados do banco de dados
     private void atualizarTabela() {
-        // atualizar tabela pelo banco de dados
+        // Atualiza a tabela pelo banco de dados
         tableModel.setRowCount(0);
         carros = new CarrosDAO().listarTodos();
         for (Carros carro : carros) {
             tableModel.addRow(new Object[] { carro.getMarca(), carro.getModelo(), carro.getAno(), carro.getPlaca(),
                     carro.getValor() });
         }
-
     }
-
 }
