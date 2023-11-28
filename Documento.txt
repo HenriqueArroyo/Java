@@ -1,0 +1,43 @@
+1. Componentes da Interface Gráfica:
+JLabels, JTextFields, e GridLayout:
+São utilizados para criar rótulos e campos de entrada para informações sobre os carros.
+JButtons e JPanel:
+Representam botões para cadastrar, editar e apagar carros, organizados em um painel.
+JTable e JScrollPane:
+Utilizados para exibir os carros em formato de tabela, permitindo visualização e interação.
+
+2. Banco de Dados:
+CarrosDAO:
+Classe responsável por interagir com o banco de dados. Contém o método criaTabela para criar a tabela de carros e listarTodos para recuperar todos os registros.
+
+3. Controle de Carros:
+CarrosControl:
+É utilizado para realizar operações no banco de dados e atualizar a tabela. Recebe uma lista de carros, o modelo da tabela e a tabela em si como parâmetros.
+
+4. Tratamento de Eventos:
+ActionListeners:
+São utilizados para tratar eventos dos botões (Cadastrar, Editar, Apagar).
+O botão "Cadastrar" valida os campos e chama o método cadastrar de CarrosControl.
+O botão "Editar" valida a placa e chama o método atualizar de CarrosControl.
+O botão "Apagar" confirma a exclusão e chama o método apagar de CarrosControl.
+
+5. Método atualizarTabela:
+Atualiza a Tabela:
+Utiliza o método listarTodos de CarrosDAO para obter a lista atualizada de carros do banco de dados.
+Atualiza a tabela Swing com os dados obtidos.
+
+6. Banco de Dados e Operações:
+ClientesDAO:
+
+A classe ClientesDAO é responsável pela interação com o banco de dados. Contém o método criaTabela para criar a tabela de clientes e listarTodos para recuperar todos os registros.
+ClientesControl:
+
+Similar à implementação anterior, é usado para realizar operações no banco de dados e atualizar a tabela.
+Atualização da Tabela:
+
+7. O método atualizarTabela atualiza a tabela com os dados obtidos do banco de dados, proporcionando uma visão em tempo real das alterações.
+Tratamento de Eventos e Validações:
+MouseListener:
+
+
+
