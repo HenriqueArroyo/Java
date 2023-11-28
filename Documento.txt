@@ -35,9 +35,6 @@ ClientesControl:
 Similar à implementação anterior, é usado para realizar operações no banco de dados e atualizar a tabela.
 Atualização da Tabela:
 
-7. O método atualizarTabela atualiza a tabela com os dados obtidos do banco de dados, proporcionando uma visão em tempo real das alterações.
-Tratamento de Eventos e Validações:
-MouseListener:
 
 
 
